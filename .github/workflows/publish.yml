@@ -1,0 +1,11 @@
+name: publish
+on:
+  workflow_dispatch:
+permissions: write-all
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    container: ruby:3
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "would publish the gem here"
