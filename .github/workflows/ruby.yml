@@ -1,0 +1,22 @@
+name: ruby
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: ruby:latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ruby -Ilib -e "require 'demo'; puts Demo.hello"
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@master
+        continue-on-error: true
+        with:
+          ruby-version: '3.3'
+      - uses: reviewdog/action-rubocop@v2
+        continue-on-error: true
