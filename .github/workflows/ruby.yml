@@ -9,6 +9,7 @@ jobs:
     container: ruby:latest
     steps:
       - uses: actions/checkout@v4
+      - run: ruby --version
       - run: ruby -Ilib -e "require 'demo'; puts Demo.hello"
   lint:
     runs-on: ubuntu-latest
